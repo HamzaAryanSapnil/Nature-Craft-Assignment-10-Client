@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddCraftItem from "../Pages/Add Craft Item/AddCraftItem";
+import MyArtAndCraftList from "../Pages/My Art And Craft List/MyArtAndCraftList";
   
 
 const router = createBrowserRouter([
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
             element:<Register></Register>
         },
         {
-            path: "/addcraftitem",
+            path: "/addCraftItem",
             element:<AddCraftItem></AddCraftItem>
+        },
+        {
+            path: "/myArtAndCraftList",
+            element:<MyArtAndCraftList></MyArtAndCraftList>
         },
       ]
     },

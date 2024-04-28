@@ -14,10 +14,10 @@ const Navbar = () => {
         <NavLink to={"/allartandcraftitems"}>All Art And Craft Items</NavLink>
       </li>
       <li>
-        <NavLink to={"/addcraftitem"}>Add Craft Item</NavLink>
+        <NavLink to={"/addCraftItem"}>Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to={"/myartandcraftlist"}>My Art And Craft List</NavLink>
+        <NavLink to={"/myArtAndCraftList"}>My Art And Craft List</NavLink>
       </li>
       <li>
         <NavLink to={"/register"}>Register</NavLink>
