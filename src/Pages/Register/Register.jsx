@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [firebaseError, setFirebaseError] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -36,8 +38,11 @@ const Register = () => {
           body: JSON.stringify(userInfo),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
-      })
+          .then((data) => {
+            console.log(data)
+            navigate("/")
+          });
+      }) 
       .catch((error) => {
         setFirebaseError(error.message);
         console.log(firebaseError);
@@ -45,6 +50,8 @@ const Register = () => {
           message: firebaseError,
         });
       });
+
+
   };
 
   return (

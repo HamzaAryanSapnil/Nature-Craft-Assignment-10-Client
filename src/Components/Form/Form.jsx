@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 const Form = () => {
+  const {user} = useContext(AuthContext);
+  const name = user?.displayName;
+  const email = user?.email;
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -16,10 +21,22 @@ const Form = () => {
           <form className="card-body">
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                value={name}
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                value={email}
                 placeholder="email"
                 className="input input-bordered"
                 required

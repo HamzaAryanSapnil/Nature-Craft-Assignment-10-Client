@@ -14,7 +14,7 @@ const Navbar = () => {
         <NavLink to={"/allartandcraftitems"}>All Art And Craft Items</NavLink>
       </li>
       <li>
-        <NavLink to={"/addcraftitems"}>Add Craft Items</NavLink>
+        <NavLink to={"/addcraftitem"}>Add Craft Item</NavLink>
       </li>
       <li>
         <NavLink to={"/myartandcraftlist"}>My Art And Craft List</NavLink>
@@ -60,8 +60,9 @@ const Navbar = () => {
       </div>
       {user ? (
         <div className="navbar-end">
-          <Link to={"/login"} className="btn">
-            Logout
+
+          <Link to={"/"}>
+            <button className="btn" >Logout</button>
           </Link>
         </div>
       ) : (
