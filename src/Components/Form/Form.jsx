@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Form = () => {
@@ -10,7 +10,11 @@ const Form = () => {
   const handleAddItem = (e) => {
     e.preventDefault();
     const form = e.target;
-    const photoUrl = form.photo_url.value;
+    const photoUrl = `${
+      form.photo_url.value
+        ? form.photo_url.value
+        : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+    }`;
     const item_name = form.item_name.value;
     const sub_category = form.sub_category.value;
     const short_des = form.short_des.value;
@@ -44,9 +48,9 @@ const Form = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.insertedId) {
-          navigate("/myArtAndCraftList")
+          navigate("/myArtAndCraftList");
         }
       })
       .catch((error) => console.error(error));
@@ -78,7 +82,6 @@ const Form = () => {
                 type="text"
                 placeholder="Please enter a photo url of your item"
                 className="input input-bordered"
-                required
               />
             </div>
 
@@ -206,9 +209,7 @@ const Form = () => {
             </div>
 
             <div className="form-control mt-6 col-span-full">
-            
               <button className="btn btn-primary">Add This Item</button>
-             
             </div>
           </form>
         </div>

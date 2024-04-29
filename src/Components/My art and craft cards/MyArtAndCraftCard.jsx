@@ -12,8 +12,18 @@ const MyArtAndCraftCard = ({ item }) => {
     rating,
     customization_value,
     stock_status,
+    _id,
   } = item;
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:3000/craftDelete/${id}`, {
+      method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+  };
   return (
     <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
       <figure>
@@ -36,7 +46,7 @@ const MyArtAndCraftCard = ({ item }) => {
       </div>
       <div className="card-actions flex-row md:flex-col justify-center items-center">
         <div className="card-actions justify-center items-center tooltip" data-tip= "Delete">
-          <button className="btn btn-primary">
+          <button onClick={() => handleDelete(_id)} className="btn btn-primary">
             <MdDeleteOutline />
           </button>
         </div>

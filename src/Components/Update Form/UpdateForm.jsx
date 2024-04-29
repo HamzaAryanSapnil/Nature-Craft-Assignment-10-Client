@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 const UpdateForm = ({ craft }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     photoUrl,
     item_name,
@@ -29,30 +29,30 @@ const UpdateForm = ({ craft }) => {
     const processing_time = form.processing_time.value;
     const stock_status = form.stock_status.value;
     const updatedCraft = {
-        photoUrl,
-        item_name,
-        sub_category,
-        short_des,
-        price,
-        rating,
-        customization_value,
-        processing_time,
-        stock_status,
-    }
+      photoUrl,
+      item_name,
+      sub_category,
+      short_des,
+      price,
+      rating,
+      customization_value,
+      processing_time,
+      stock_status,
+    };
     fetch(`http://localhost:3000/craftUpdates/${_id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(updatedCraft),
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedCraft),
     })
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-            navigate("/")
+          navigate("/");
         }
-    })
+      });
   };
   return (
     <div>
@@ -94,7 +94,6 @@ const UpdateForm = ({ craft }) => {
                   type="text"
                   placeholder="Please enter a photo url of your item"
                   className="input input-bordered"
-                  required
                 />
               </div>
 
@@ -242,7 +241,7 @@ const UpdateForm = ({ craft }) => {
 };
 
 UpdateForm.propTypes = {
-    craft: PropTypes.object
-  };
+  craft: PropTypes.object,
+};
 
 export default UpdateForm;

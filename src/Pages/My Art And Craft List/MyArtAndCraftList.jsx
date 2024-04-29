@@ -14,8 +14,9 @@ const MyArtAndCraftList = () => {
         console.log(data);
         setItems(data);
       });
-  }, []) ;
-  console.log(items.length);
+  }, []);
+
+  
 
   return (
     <div className="container mx-auto grid grid-cols-1  justify-center justify-items-center items-center my-10 gap-10">
