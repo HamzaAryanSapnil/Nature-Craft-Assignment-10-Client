@@ -19,10 +19,11 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    const name = data.firstName + data.lastName;
+    const name = `${data.firstName} ${data.lastName}`;
+    console.log(name);
     const email = data.email;
     const password = data.password;
-    const photoUrl = data.photo;
+    const photoUrl = ` ${data?.photo ? data?.photo : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}`;
     const userInfo = {
       name,
       email,
