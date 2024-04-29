@@ -41,19 +41,19 @@ const MyArtAndCraftCard = ({ item }) => {
           </button>
         </div>
         <div className="card-actions justify-center items-center tooltip" data-tip="Update">
-          <Link>
+          <Link to={`/craftUpdate/${item?._id}`} >
           <button className="btn btn-primary">
             <MdOutlineSystemUpdateAlt />
           </button>
           </Link>
         </div>
-        <div className="card-actions justify-center items-center tooltip" data-tip="Details">
+        {/* <div className="card-actions justify-center items-center tooltip" data-tip="Details">
           <Link to={`/craftDetails/${item._id}`} >
           <button className="btn btn-primary">
           <TbListDetails />
           </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
