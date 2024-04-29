@@ -1,15 +1,12 @@
 import { useLoaderData } from "react-router-dom";
+import UpdateForm from "../../Components/Update Form/UpdateForm";
 
 const UpdateCraft = () => {
   const craft = useLoaderData();
-  
+
   return (
     <div>
-      Update craft of craftName:
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
+      <UpdateForm craft={craft} ></UpdateForm>
     </div>
   );
 };

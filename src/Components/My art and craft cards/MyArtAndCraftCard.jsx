@@ -15,7 +15,7 @@ const MyArtAndCraftCard = ({ item }) => {
   } = item;
 
   return (
-    <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4">
+    <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
       <figure>
         <img
           src={
