@@ -162,7 +162,6 @@ const Register = () => {
                       }
                     </button>
                   </span>
-              </div>
               <input
                 {...register("password", {
                   required: {
@@ -180,13 +179,14 @@ const Register = () => {
                       "Password must have one uppercase, one lowercase, one number and one special case character",
                   },
                 })}
-                type="password"
+                type={showPass ? "text" : "password"}
                 placeholder="password"
                 className="input input-bordered"
               />
               {errors.password && (
                 <p className="text-red-600">{errors.password.message}</p>
               )}
+              </div>
             </div>
             <div className="form-control mt-6">
               <button disabled={isSubmitting} className="btn btn-primary">
