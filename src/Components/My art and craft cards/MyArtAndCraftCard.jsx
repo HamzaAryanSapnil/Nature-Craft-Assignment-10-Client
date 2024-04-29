@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const MyArtAndCraftCard = ({ item }) => {
   const {
@@ -40,14 +41,18 @@ const MyArtAndCraftCard = ({ item }) => {
           </button>
         </div>
         <div className="card-actions justify-center items-center tooltip" data-tip="Update">
+          <Link>
           <button className="btn btn-primary">
             <MdOutlineSystemUpdateAlt />
           </button>
+          </Link>
         </div>
         <div className="card-actions justify-center items-center tooltip" data-tip="Details">
+          <Link to={`/craftDetails/${item._id}`} >
           <button className="btn btn-primary">
           <TbListDetails />
           </button>
+          </Link>
         </div>
       </div>
     </div>
