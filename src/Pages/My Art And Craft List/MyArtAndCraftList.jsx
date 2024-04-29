@@ -14,16 +14,17 @@ const MyArtAndCraftList = () => {
         console.log(data);
         setItems(data);
       });
-  });
+  }, []) ;
+  console.log(items.length);
 
   return (
     <div className="container mx-auto grid grid-cols-1  justify-center justify-items-center items-center my-10 gap-10">
-      {items ? (
+      {items.length > 0 ? (
         items.map((item) => (
           <MyArtAndCraftCard key={item?._id} item={item}></MyArtAndCraftCard>
         ))
       ) : (
-        <div>
+        <div className="flex flex-col min-h-screen gap-y-3 w-full justify-center items-center" >
           <h1>You didn&apos;t crafted any items.</h1>
           <Link to={"/addCraftItem"} ><button className="btn btn-primary">Please Add Your Own Items</button></Link>
         </div>
