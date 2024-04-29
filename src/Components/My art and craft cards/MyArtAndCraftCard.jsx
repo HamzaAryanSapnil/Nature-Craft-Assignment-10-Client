@@ -22,10 +22,11 @@ const MyArtAndCraftCard = ({ item }) => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
+    
     })
   };
   return (
-    <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
+     <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
       <figure>
         <img
           src={
@@ -65,9 +66,8 @@ const MyArtAndCraftCard = ({ item }) => {
           </Link>
         </div> */}
       </div>
-    </div>
-  );
-};
+    </div> 
+)};
 
 MyArtAndCraftCard.propTypes = {
   item: PropTypes.object,
