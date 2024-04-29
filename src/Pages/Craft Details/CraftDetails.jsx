@@ -3,7 +3,7 @@
 const CraftDetails = () => {
     return (
         <div>
-            
+            this is craft details of id: {id}
         </div>
     );
 };
