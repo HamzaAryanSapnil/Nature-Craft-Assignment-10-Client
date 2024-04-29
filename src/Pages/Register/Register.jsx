@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [firebaseError, setFirebaseError] = useState("");
+  const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate();
   const {
     register,
@@ -138,6 +141,28 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
+              <div className="relative" >
+              <span className="absolute inset-y-0 right-4 flex items-center pl-2 ">
+                    <button
+                      type="button"
+                      title="search"
+                      className="p-1 focus:outline-none focus:ring"
+                    >
+                      {
+                        showPass ? (
+                          <IoEye
+                          className="text-signBtn"
+                            onClick={() => setShowPass(!showPass)}
+                          />
+                        ) : (
+                          <IoEyeOff
+                            onClick={() => setShowPass(!showPass)}
+                          />
+                        )
+                      }
+                    </button>
+                  </span>
+              </div>
               <input
                 {...register("password", {
                   required: {

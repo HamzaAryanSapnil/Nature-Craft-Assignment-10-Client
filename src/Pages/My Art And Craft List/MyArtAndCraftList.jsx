@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
+import MyArtAndCraftCard from "../../Components/My art and craft cards/MyArtAndCraftCard";
 
 const MyArtAndCraftList = () => {
     const user = useAuth();
@@ -14,11 +15,14 @@ const MyArtAndCraftList = () => {
       })
     
       
-    }, )
+    })
     
     return (
-        <div>
-            My Art And Craft List: {items.length}
+        <div className="grid grid-cols-1  justify-center justify-items-center items-center my-10 gap-10" >
+           {items.map(item => <MyArtAndCraftCard
+           key={item?._id}
+           item={item}
+           ></MyArtAndCraftCard>)} 
         </div>
     );
 };
