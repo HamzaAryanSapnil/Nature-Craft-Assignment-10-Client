@@ -17,6 +17,7 @@ const MyArtAndCraftList = () => {
       
     })
     
+    
     return (
         <div className="grid grid-cols-1  justify-center justify-items-center items-center my-10 gap-10" >
            {items.map(item => <MyArtAndCraftCard

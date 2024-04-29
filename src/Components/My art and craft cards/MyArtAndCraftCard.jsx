@@ -1,21 +1,20 @@
 import PropTypes from "prop-types";
+import { MdDeleteOutline } from "react-icons/md";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
+import { TbListDetails } from "react-icons/tb";
 
 const MyArtAndCraftCard = ({ item }) => {
   const {
     photoUrl,
     item_name,
-    sub_category,
-    short_des,
     price,
     rating,
     customization_value,
-    processing_time,
     stock_status,
-    name,
-    email,
   } = item;
+
   return (
-    <div className="card flex-row bg-base-100 shadow-xl">
+    <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4">
       <figure>
         <img
           src={
@@ -24,7 +23,7 @@ const MyArtAndCraftCard = ({ item }) => {
               : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
           }
           alt="Shoes"
-          className="h-80"
+          className="h-52 md:h-80"
         />
       </figure>
       <div className="card-body">
@@ -34,15 +33,21 @@ const MyArtAndCraftCard = ({ item }) => {
         <p>Customization: {customization_value}</p>
         <p>Stock Status: {stock_status}</p>
       </div>
-      <div className="card-actions flex-col justify-center items-center" >
-        <div className="card-actions justify-center items-center">
-          <button className="btn btn-primary">Buy Now</button>
+      <div className="card-actions flex-row md:flex-col justify-center items-center">
+        <div className="card-actions justify-center items-center tooltip" data-tip= "Delete">
+          <button className="btn btn-primary">
+            <MdDeleteOutline />
+          </button>
         </div>
-        <div className="card-actions justify-center items-center">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="card-actions justify-center items-center tooltip" data-tip="Update">
+          <button className="btn btn-primary">
+            <MdOutlineSystemUpdateAlt />
+          </button>
         </div>
-        <div className="card-actions justify-center items-center">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="card-actions justify-center items-center tooltip" data-tip="Details">
+          <button className="btn btn-primary">
+          <TbListDetails />
+          </button>
         </div>
       </div>
     </div>
