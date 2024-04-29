@@ -181,7 +181,7 @@ const Register = () => {
                 })}
                 type={showPass ? "text" : "password"}
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered w-full py-2 pl-10 text-sm rounded-md  focus:outline-none"
               />
               {errors.password && (
                 <p className="text-red-600">{errors.password.message}</p>
