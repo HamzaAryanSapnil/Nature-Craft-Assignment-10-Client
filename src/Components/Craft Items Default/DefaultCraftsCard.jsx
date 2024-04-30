@@ -4,7 +4,7 @@ const DefaultCraftsCard = ({defaultCraft}) => {
     const {photoUrl, item_name, sub_category} = defaultCraft;
     console.log(defaultCraft, photoUrl);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card md:w-96 bg-base-100 shadow-xl p-4">
       <figure>
         <img
           src={defaultCraft?.photoUrl ? defaultCraft?.photoUrl :"https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"}

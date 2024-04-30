@@ -27,10 +27,23 @@ const SubCategoryCards = () => {
   
     
   }, [])
+
+  const slidesPerView = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 1024) {
+      return 4;
+    } else if (screenWidth >= 768) {
+      return 3;
+    } else if (screenWidth >= 640) {
+      return 2;
+    } else {
+      return 1;
+    }
+  };
   
   return (
     <Swiper
-      slidesPerView={4}
+      slidesPerView={slidesPerView()}
       // centeredSlides={true}
       spaceBetween={30}
       grabCursor={true}

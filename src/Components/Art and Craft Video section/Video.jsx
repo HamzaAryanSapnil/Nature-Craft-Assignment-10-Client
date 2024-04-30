@@ -36,10 +36,11 @@ const Video = () => {
       <div className="flex-1">
         <div className="card h-[450px] bg-base-100 shadow-xl ">
           <div className="card-body">
-            <video autoPlay loop muted className="w-full h-full object-cover">
+            <div className="w-full h-full object-cover">
               <iframe
-                width={560}
-                height={315}
+                // width={560}
+                // height={315}
+                className="w-full h-full"
                 src="https://www.youtube.com/embed/F5_HWSdoncw?si=UvJQNU-4LC0kdwhM"
                 title="YouTube video player"
                 frameBorder={0}
@@ -47,7 +48,7 @@ const Video = () => {
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen=""
               />
-            </video>
+            </div>
           </div>
         </div>
       </div>

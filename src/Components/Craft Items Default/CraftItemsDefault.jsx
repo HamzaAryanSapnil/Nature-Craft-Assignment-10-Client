@@ -14,7 +14,7 @@ const CraftItemsDefault = () => {
     }, [])
     
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-10 justify-center items-center container mx-auto" >
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-10 justify-center items-center container mx-auto p-2" >
             
             {defaultCrafts.map(defaultCraft => <DefaultCraftsCard key={defaultCraft?._id}
             defaultCraft={defaultCraft}

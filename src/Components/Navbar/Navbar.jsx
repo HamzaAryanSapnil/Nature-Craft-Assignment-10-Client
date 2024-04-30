@@ -1,7 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -65,7 +64,7 @@ const Navbar = () => {
             {/* nav links here */ navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">NatureCraft</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
