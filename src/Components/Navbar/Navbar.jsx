@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 my-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,10 +75,13 @@ const Navbar = () => {
       {user ? (
           <div className="navbar-end">
             <div
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={user?.displayName ? user?.displayName : "User"}
+            data-tooltip-place="top"
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar tooltip"
-              data-tip={user?.displayName ? user?.displayName : "User"}
+              className="btn btn-ghost btn-circle avatar "
+              // data-tip={user?.displayName ? user?.displayName : "User"}
             >
               <div className="w-10 rounded-full">
                 <img
@@ -107,6 +111,7 @@ const Navbar = () => {
             </Link>
           </div>
         )}
+        <Tooltip id="my-tooltip" />
     </div>
   );
 };

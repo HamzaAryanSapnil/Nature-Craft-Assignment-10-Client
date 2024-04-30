@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 const DefaultCraftsCard = ({defaultCraft}) => {
-    const {photoUrl, item_name, sub_category} = defaultCraft;
+    const {photoUrl, item_name} = defaultCraft;
     console.log(defaultCraft, photoUrl);
   return (
     <div className="card md:w-96 bg-base-100 shadow-xl p-4">
@@ -16,7 +16,7 @@ const DefaultCraftsCard = ({defaultCraft}) => {
         <h2 className="card-title">{item_name}</h2>
         <p>{defaultCraft?.short_des}</p>
         <div className="card-actions justify-end">
-          <Link to={`/craftDetails/${sub_category}`} ><button className="btn btn-primary">View Details</button></Link>
+          <Link to={`/craftDetails/${defaultCraft?._id}`} ><button className="btn btn-primary">View Details</button></Link>
         </div>
       </div>
     </div>
