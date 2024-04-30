@@ -4,7 +4,7 @@ import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {logIn} = useAuth();
+  const {logIn, githubLogin, googleLogin} = useAuth();
   const location = useLocation();
   const {
     register,
@@ -33,6 +33,24 @@ const Login = () => {
         });
     })
     .catch(error => console.error(error));
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("Google Login", result);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        console.log("Github Login", result);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -103,6 +121,11 @@ const Login = () => {
                 </button>
             </div>
           </form>
+            <p className="text-center">Or Login with</p>
+          <div className="flex flex-row justify-around items-center">
+            <button onClick={handleGoogleLogin} className="btn btn-secondary btn-outline" >Google</button>
+            <button onClick={handleGithubLogin} className="btn btn-outline btn-primary" >Github</button>
+          </div>
           <p><small>Don&apos;t have any account? please <Link className="text-blue-600 font-bold" to={"/register"} >Register</Link></small></p>
         </div>
       </div>
