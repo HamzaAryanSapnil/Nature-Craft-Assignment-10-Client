@@ -1,5 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
   const navigate = useNavigate();
