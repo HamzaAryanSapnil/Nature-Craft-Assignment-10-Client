@@ -126,7 +126,7 @@ const Form = () => {
                 <option value={"JuteKitchenware_and_utensils"}>
                   JuteKitchenware and utensils
                 </option>
-                <option value={"Jute_and_woode_jewellery"}>
+                <option value={"Jute_and_wooden_jewellery"}>
                   Jute and woode jewellery
                 </option>
               </select>

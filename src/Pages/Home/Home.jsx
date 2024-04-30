@@ -20,7 +20,7 @@ const Home = () => {
       </div>
 
       {/* sub category */}
-      <div className="h-[400px] container mx-auto my-10">
+      <div className="h-[600px] container mx-auto mt-20 my-10">
         <SubCategoryCards></SubCategoryCards>
       </div>
     </div>
