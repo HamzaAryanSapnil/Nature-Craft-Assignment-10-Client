@@ -82,6 +82,7 @@ const Form = () => {
                 type="text"
                 placeholder="Please enter a photo url of your item"
                 className="input input-bordered"
+                defaultValue="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
               />
             </div>
 
@@ -97,18 +98,40 @@ const Form = () => {
                 required
               />
             </div>
+            {/* 
+            *sub category options
+            
+            */}
             <div className="form-control md:col-span-6 xl:col-span-4">
               <label className="label">
-                <span className="label-text">Sub Category</span>
+                <span className="label-text">
+                  Please select a sub-cat for your Craft
+                </span>
               </label>
-              <input
-                name="sub_category"
-                type="text"
-                placeholder="Enter a sub category of your craft item"
-                className="input input-bordered"
-                required
-              />
+              <select
+              name="sub_category"
+              required
+              className="select select-bordered w-full max-w-xs">
+                <option disabled selected>
+                  Sub Category
+                </option>
+                <option value={"WoodenFurniture_and_Sculptures"}>
+                  WoodenFurniture and Sculptures
+                </option>
+                <option value={"Wooden_Home_Decor"}>Wooden Home Decor</option>
+                <option value={"WoodenUtensils_and_Kitchenware"}>
+                  WoodenUtensils and Kitchenware
+                </option>
+                <option value={"Jute_Home_Decor"}>Jute Home Decor</option>
+                <option value={"JuteKitchenware_and_utensils"}>
+                  JuteKitchenware and utensils
+                </option>
+                <option value={"Jute_and_woode_jewellery"}>
+                  Jute and woode jewellery
+                </option>
+              </select>
             </div>
+
             <div className="form-control md:col-span-6 xl:col-span-4">
               <label className="label">
                 <span className="label-text">Your Craft Items description</span>

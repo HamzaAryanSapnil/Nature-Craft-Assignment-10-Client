@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 
 const MyArtAndCraftList = () => {
   const user = useAuth();
@@ -57,6 +58,7 @@ const MyArtAndCraftList = () => {
             <p>Rating: {item.rating}</p>
             <p>Customization: {item.customization_value}</p>
             <p>Stock Status: {item.stock_status}</p>
+            <p>Sub Category: {item.sub_category}</p>
           </div>
           <div className="card-actions flex-row md:flex-col justify-center items-center">
             <div
@@ -87,6 +89,7 @@ const MyArtAndCraftList = () => {
           </button>
           </Link>
         </div> */}
+          <Link to={"/addCraftItem"}><button className="btn btn-primary tooltip" data-tip ="Add More Craft" ><IoMdAdd /></button></Link>
           </div>
         </div>
       ))}
