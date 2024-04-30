@@ -13,12 +13,14 @@ import UpdateCraft from "../Pages/Update Craft/UpdateCraft";
 import PrivateRoutes from "../Private/PrivateRoutes";
 import AllArtAndCraftItems from "../Pages/All Art and Craft Items/AllArtAndCraftItems";
 import SubCategories from "../Pages/Sub Categories Page/SubCategories";
+import ErrorPage from "../Pages/Not Found/ErrorPage";
   
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root/>,
+      errorElement: <ErrorPage></ErrorPage>,
       children:[
         {
             path: "/",

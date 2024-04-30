@@ -73,20 +73,41 @@ const Navbar = () => {
         </ul>
       </div>
       {user ? (
-        <div className="navbar-end">
-          <Link to={"/"}>
-            <button onClick={handleLogOut} className="btn">
-              Logout
+          <div className="navbar-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar tooltip"
+              data-tip={user?.displayName ? user?.displayName : "User"}
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                  }
+                />
+              </div>
+            </div>
+            <button
+              onClick={handleLogOut}
+              className="sticky btn text-error btn-outline btn-error font-medium "
+            >
+              SignOut
             </button>
-          </Link>
-        </div>
-      ) : (
-        <div className="navbar-end">
-          <Link to={"/login"} className="btn">
-            Login
-          </Link>
-        </div>
-      )}
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link
+              to="/login"
+              className="btn  btn-outline bg-signBtn text-white font-bold"
+            >
+              Login
+            </Link>
+          </div>
+        )}
     </div>
   );
 };
