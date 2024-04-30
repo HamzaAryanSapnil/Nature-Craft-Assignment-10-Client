@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 
@@ -10,6 +10,7 @@ const Register = () => {
   const [firebaseError, setFirebaseError] = useState("");
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -44,7 +45,7 @@ const Register = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
-            navigate("/")
+            navigate(location?.state ? location?.state : "/")
           });
       }) 
       .catch((error) => {

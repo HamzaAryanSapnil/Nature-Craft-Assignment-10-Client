@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const {logIn} = useAuth();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onSubmit =  (data) => {
@@ -28,7 +29,7 @@ const Login = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          navigate("/")
+          navigate(location?.state ? location?.state : "/")
         });
     })
     .catch(error => console.error(error));
@@ -94,7 +95,12 @@ const Login = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button disabled={isSubmitting} className="btn btn-primary">
+                {isSubmitting ? <span className="loading loading-spinner loading-lg"></span>
+                :
+                <span>Login</span>
+                }
+                </button>
             </div>
           </form>
         </div>
