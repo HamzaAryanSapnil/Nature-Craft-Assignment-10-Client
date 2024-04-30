@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Login = () => {
@@ -103,6 +103,7 @@ const Login = () => {
                 </button>
             </div>
           </form>
+          <p><small>Don&apos;t have any account? please <Link className="text-blue-600 font-bold" to={"/register"} >Register</Link></small></p>
         </div>
       </div>
     </div>

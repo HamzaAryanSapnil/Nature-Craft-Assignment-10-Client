@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 
@@ -203,6 +203,7 @@ const Register = () => {
               )}
             </div>
           </form>
+          <p><small>Already have an account? please <Link className="text-blue-600 font-bold" to={"/login"} >Login</Link></small></p>
         </div>
       </div>
     </div>
