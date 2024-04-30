@@ -39,7 +39,7 @@ const CraftDetails = () => {
         </div>
         <div className="">
           <h1 className="text-5xl font-bold">{sub_category}</h1>
-          <p className="py-6">{item_name}</p>
+          <p className="py-6 text-3xl font-medium">{item_name}</p>
           <p className="py-6 text-xl ">
             {short_des}
           </p>
@@ -49,7 +49,7 @@ const CraftDetails = () => {
           <p className="py-6 text-cardDescolor text-lg">Processing time: {processing_time}</p>
           
           <p className="py-6 text-cardDescolor text-xl text-descolor70">Customizable: {customization_value}</p>
-          <Link to={"/property_details"} ><button className="btn btn-success text-white  text-lg  ">More Properties?</button></Link>
+          <Link to={"/addCraftItem"} ><button className="btn btn-success text-white  text-lg  ">Add More Craft?</button></Link>
         </div>
       </div>
     </div>
