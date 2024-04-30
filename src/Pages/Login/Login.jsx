@@ -1,25 +1,37 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const {logIn} = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit =  (data) => {
     console.log(data);
-    await fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
+    const email = data.email;
+    const password = data.password;
+    logIn(email, password)
+    .then(async result => {
+      console.log(result);
+      await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          navigate("/")
+        });
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    .catch(error => console.error(error));
   };
   return (
     <div className="hero min-h-screen bg-base-200">

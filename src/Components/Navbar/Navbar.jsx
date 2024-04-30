@@ -1,16 +1,15 @@
-import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProviders";
+import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user, logOut } = useAuth();
   console.log(user);
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut();
-    navigate("/")
-  }
+    navigate("/");
+  };
   const navLinks = (
     <>
       <li>
@@ -19,15 +18,22 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allartandcraftitems"}>All Art And Craft Items</NavLink>
       </li>
-      <li>
-        <NavLink to={"/addCraftItem"}>Add Craft Item</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/myArtAndCraftList"}>My Art And Craft List</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/register"}>Register</NavLink>
-      </li>
+      {user ? (
+        <>
+          {" "}
+          <li>
+            {" "}
+            <NavLink to={"/addCraftItem"}>Add Craft Item</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/myArtAndCraftList"}>My Art And Craft List</NavLink>
+          </li>
+        </>
+      ) : (
+        <li>
+          <NavLink to={"/register"}>Register</NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -66,9 +72,10 @@ const Navbar = () => {
       </div>
       {user ? (
         <div className="navbar-end">
-
           <Link to={"/"}>
-            <button onClick={handleLogOut} className="btn" >Logout</button>
+            <button onClick={handleLogOut} className="btn">
+              Logout
+            </button>
           </Link>
         </div>
       ) : (
