@@ -16,7 +16,7 @@ const MyArtAndCraftList = () => {
         console.log(data);
         setItems(data);
       });
-  }, []);
+  }, [email]);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/craftDelete/${id}`, {
