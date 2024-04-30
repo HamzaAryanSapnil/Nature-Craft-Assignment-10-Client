@@ -11,6 +11,7 @@ import MyArtAndCraftList from "../Pages/My Art And Craft List/MyArtAndCraftList"
 import CraftDetails from "../Pages/Craft Details/CraftDetails";
 import UpdateCraft from "../Pages/Update Craft/UpdateCraft";
 import PrivateRoutes from "../Private/PrivateRoutes";
+import AllArtAndCraftItems from "../Pages/All Art and Craft Items/AllArtAndCraftItems";
   
 
 const router = createBrowserRouter([
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         {
             path: "/addCraftItem",
             element: <PrivateRoutes><AddCraftItem></AddCraftItem></PrivateRoutes>
+        },
+        {
+            path: "/allArtAndCraftItems",
+            element: <PrivateRoutes><AllArtAndCraftItems></AllArtAndCraftItems></PrivateRoutes>,
+            loader: ()=> fetch("http://localhost:3000/allArtAndCraftItems"),
         },
         {
             path: "/myArtAndCraftList",
