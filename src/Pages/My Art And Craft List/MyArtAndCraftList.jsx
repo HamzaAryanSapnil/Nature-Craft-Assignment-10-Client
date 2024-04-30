@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
+import { TbListDetails } from "react-icons/tb";
 
 const MyArtAndCraftList = () => {
   const user = useAuth();
@@ -27,14 +28,12 @@ const MyArtAndCraftList = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          const remaining = items.filter(item => item._id !== id);
-          setItems(remaining)
-          
+          const remaining = items.filter((item) => item._id !== id);
+          setItems(remaining);
         }
       });
   };
-  return (
-    items.length > 0 ? 
+  return items.length > 0 ? (
     <div className="container mx-auto grid grid-cols-1  justify-center justify-items-center items-center my-10 gap-10">
       {items.map((item) => (
         <div
@@ -59,6 +58,12 @@ const MyArtAndCraftList = () => {
             <p>Customization: {item.customization_value}</p>
             <p>Stock Status: {item.stock_status}</p>
             <p>Sub Category: {item.sub_category}</p>
+
+            <Link to={`/craftDetails/${item._id}`}>
+              <button className="btn btn-primary tooltip" data-tip="Details">
+                <TbListDetails />
+              </button>
+            </Link>
           </div>
           <div className="card-actions flex-row md:flex-col justify-center items-center">
             <div
@@ -82,25 +87,26 @@ const MyArtAndCraftList = () => {
                 </button>
               </Link>
             </div>
-            {/* <div className="card-actions justify-center items-center tooltip" data-tip="Details">
-          <Link to={`/craftDetails/${item._id}`} >
-          <button className="btn btn-primary">
-          <TbListDetails />
-          </button>
-          </Link>
-        </div> */}
-          <Link to={"/addCraftItem"}><button className="btn btn-primary tooltip" data-tip ="Add More Craft" ><IoMdAdd /></button></Link>
+
+            <Link to={"/addCraftItem"}>
+              <button
+                className="btn btn-primary tooltip"
+                data-tip="Add More Craft"
+              >
+                <IoMdAdd />
+              </button>
+            </Link>
           </div>
         </div>
       ))}
     </div>
-     :
-
-     <div className="flex items-center justify-center flex-col min-h-screen gap-y-6" >
-     <h1> Currently you do not have any items here </h1>
-     <Link to={"/addCraftItem"}><button className="btn btn-primary" >Add more Craft</button></Link>
-     </div>
-
+  ) : (
+    <div className="flex items-center justify-center flex-col min-h-screen gap-y-6">
+      <h1> Currently you do not have any items here </h1>
+      <Link to={"/addCraftItem"}>
+        <button className="btn btn-primary">Add more Craft</button>
+      </Link>
+    </div>
   );
 };
 
