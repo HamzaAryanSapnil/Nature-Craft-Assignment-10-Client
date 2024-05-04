@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [firebaseError, setFirebaseError] = useState("");
-  const [showPass, setShowPass] = useState(false)
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -25,7 +25,11 @@ const Register = () => {
     console.log(name);
     const email = data.email;
     const password = data.password;
-    const photoUrl = ` ${data?.photo ? data?.photo : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}`;
+    const photoUrl = ` ${
+      data?.photo
+        ? data?.photo
+        : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }`;
     const userInfo = {
       name,
       email,
@@ -36,7 +40,7 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         updateUser(name, photoUrl);
-        fetch("http://localhost:3000/users", {
+        fetch("https://art-and-craft-server-nine.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -45,17 +49,17 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
-            navigate(location?.state ? location?.state : "/")
+            console.log(data);
+            navigate(location?.state ? location?.state : "/");
             Swal.fire({
               position: "top-end",
               icon: "success",
               title: "Register success",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             });
           });
-      }) 
+      })
       .catch((error) => {
         setFirebaseError(error.message);
         console.log(firebaseError);
@@ -63,8 +67,6 @@ const Register = () => {
           message: firebaseError,
         });
       });
-
-
   };
 
   return (
@@ -151,51 +153,47 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <div className="relative" >
-              <span className="absolute inset-y-0 right-4 flex items-center pl-2 ">
-                    <button
-                      type="button"
-                      title="search"
-                      className="p-1 focus:outline-none focus:ring"
-                    >
-                      {
-                        showPass ? (
-                          <IoEye
-                          className="text-signBtn"
-                            onClick={() => setShowPass(!showPass)}
-                          />
-                        ) : (
-                          <IoEyeOff
-                            onClick={() => setShowPass(!showPass)}
-                          />
-                        )
-                      }
-                    </button>
-                  </span>
-              <input
-                {...register("password", {
-                  required: {
-                    value: true,
-                    message: "Password is required",
-                  },
-                  minLength: {
-                    value: 6,
-                    message: "Password must be 6 characters or longer",
-                  },
-                  // /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                  pattern: {
-                    value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                    message:
-                      "Password must have one uppercase, one lowercase, one number and one special case character",
-                  },
-                })}
-                type={showPass ? "text" : "password"}
-                placeholder="password"
-                className="input input-bordered w-full py-2 pl-10 text-sm rounded-md  focus:outline-none"
-              />
-              {errors.password && (
-                <p className="text-red-600">{errors.password.message}</p>
-              )}
+              <div className="relative">
+                <span className="absolute inset-y-0 right-4 flex items-center pl-2 ">
+                  <button
+                    type="button"
+                    title="search"
+                    className="p-1 focus:outline-none focus:ring"
+                  >
+                    {showPass ? (
+                      <IoEye
+                        className="text-signBtn"
+                        onClick={() => setShowPass(!showPass)}
+                      />
+                    ) : (
+                      <IoEyeOff onClick={() => setShowPass(!showPass)} />
+                    )}
+                  </button>
+                </span>
+                <input
+                  {...register("password", {
+                    required: {
+                      value: true,
+                      message: "Password is required",
+                    },
+                    minLength: {
+                      value: 6,
+                      message: "Password must be 6 characters or longer",
+                    },
+                    // /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                    pattern: {
+                      value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                      message:
+                        "Password must have one uppercase, one lowercase, one number and one special case character",
+                    },
+                  })}
+                  type={showPass ? "text" : "password"}
+                  placeholder="password"
+                  className="input input-bordered w-full py-2 pl-10 text-sm rounded-md  focus:outline-none"
+                />
+                {errors.password && (
+                  <p className="text-red-600">{errors.password.message}</p>
+                )}
               </div>
             </div>
             <div className="form-control mt-6">
@@ -211,7 +209,14 @@ const Register = () => {
               )}
             </div>
           </form>
-          <p><small>Already have an account? please <Link className="text-blue-600 font-bold" to={"/login"} >Login</Link></small></p>
+          <p>
+            <small>
+              Already have an account? please{" "}
+              <Link className="text-blue-600 font-bold" to={"/login"}>
+                Login
+              </Link>
+            </small>
+          </p>
         </div>
       </div>
     </div>

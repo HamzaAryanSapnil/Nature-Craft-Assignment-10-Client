@@ -39,7 +39,7 @@ const Form = () => {
       email,
     };
     console.log(craftData);
-    fetch("http://localhost:3000/addCraftItem", {
+    fetch("https://art-and-craft-server-nine.vercel.app/addCraftItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -109,9 +109,10 @@ const Form = () => {
                 </span>
               </label>
               <select
-              name="sub_category"
-              required
-              className="select select-bordered w-full max-w-xs">
+                name="sub_category"
+                required
+                className="select select-bordered w-full max-w-xs"
+              >
                 <option disabled selected>
                   Sub Category
                 </option>

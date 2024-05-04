@@ -40,7 +40,7 @@ const UpdateForm = ({ craft }) => {
       processing_time,
       stock_status,
     };
-    fetch(`http://localhost:3000/craftUpdates/${_id}`, {
+    fetch(`https://art-and-craft-server-nine.vercel.app/craftUpdates/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

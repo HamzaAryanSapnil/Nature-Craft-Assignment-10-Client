@@ -11,7 +11,9 @@ const MyArtAndCraftList = () => {
   const [items, setItems] = useState([]);
   const email = user?.user?.email;
   useEffect(() => {
-    fetch(`http://localhost:3000/myArtAndCraftList/${email}`)
+    fetch(
+      `https://art-and-craft-server-nine.vercel.app/myArtAndCraftList/${email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
@@ -19,7 +21,7 @@ const MyArtAndCraftList = () => {
   }, [email]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/craftDelete/${id}`, {
+    fetch(`https://art-and-craft-server-nine.vercel.app/craftDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -1,4 +1,4 @@
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,19 +15,17 @@ const Banner = () => {
   const [bannerData, setbannerData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/subCategoriesLists")
-    .then(res => res.json())
-    .then(data => {
-      console.log("data ", data);
-      setbannerData(data);
-      console.log("sub categories ", bannerData);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  
-    
-  }, [])
+    fetch("https://art-and-craft-server-nine.vercel.app/subCategoriesLists")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data ", data);
+        setbannerData(data);
+        console.log("sub categories ", bannerData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <Swiper
       spaceBetween={30}
@@ -54,21 +52,31 @@ const Banner = () => {
           </div>
         </div>
       </SwiperSlide> */}
-      {bannerData.map(banner => <SwiperSlide key={banner._id}
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${banner?.photo_url ? banner?.photo_url : 'https://i.postimg.cc/m2d8DD1y/pexels-tiana-18128-2900935.jpg'})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="text-white font-bold text-3xl md:text-5xl flex justify-center items-center h-full ">
-          <div className="w-9/12 flex flex-col gap-4 ">
-            <h1>{banner?.sub_category_name}</h1>
-            <Link to={`/subCategories/${banner?.sub_category}`} ><button className="btn btn-outline btn-secondary max-w-28" >View Category</button></Link>
+      {bannerData.map((banner) => (
+        <SwiperSlide
+          key={banner._id}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${
+              banner?.photo_url
+                ? banner?.photo_url
+                : "https://i.postimg.cc/m2d8DD1y/pexels-tiana-18128-2900935.jpg"
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="text-white font-bold text-3xl md:text-5xl flex justify-center items-center h-full ">
+            <div className="w-9/12 flex flex-col gap-4 ">
+              <h1>{banner?.sub_category_name}</h1>
+              <Link to={`/subCategories/${banner?.sub_category}`}>
+                <button className="btn btn-outline btn-secondary max-w-28">
+                  View Category
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </SwiperSlide>)}
-      
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

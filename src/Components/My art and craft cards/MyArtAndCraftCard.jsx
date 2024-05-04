@@ -16,17 +16,16 @@ const MyArtAndCraftCard = ({ item }) => {
   } = item;
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/craftDelete/${id}`, {
-      method: "DELETE"
+    fetch(`https://art-and-craft-server-nine.vercel.app/craftDelete/${id}`, {
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
-     <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
+    <div className="card flex-col md:flex-row bg-base-100 shadow-xl p-4 w-full ">
       <figure>
         <img
           src={
@@ -46,16 +45,22 @@ const MyArtAndCraftCard = ({ item }) => {
         <p>Stock Status: {stock_status}</p>
       </div>
       <div className="card-actions flex-row md:flex-col justify-center items-center">
-        <div className="card-actions justify-center items-center tooltip" data-tip= "Delete">
+        <div
+          className="card-actions justify-center items-center tooltip"
+          data-tip="Delete"
+        >
           <button onClick={() => handleDelete(_id)} className="btn btn-primary">
             <MdDeleteOutline />
           </button>
         </div>
-        <div className="card-actions justify-center items-center tooltip" data-tip="Update">
-          <Link to={`/craftUpdate/${item?._id}`} >
-          <button className="btn btn-primary">
-            <MdOutlineSystemUpdateAlt />
-          </button>
+        <div
+          className="card-actions justify-center items-center tooltip"
+          data-tip="Update"
+        >
+          <Link to={`/craftUpdate/${item?._id}`}>
+            <button className="btn btn-primary">
+              <MdOutlineSystemUpdateAlt />
+            </button>
           </Link>
         </div>
         {/* <div className="card-actions justify-center items-center tooltip" data-tip="Details">
@@ -66,8 +71,9 @@ const MyArtAndCraftCard = ({ item }) => {
           </Link>
         </div> */}
       </div>
-    </div> 
-)};
+    </div>
+  );
+};
 
 MyArtAndCraftCard.propTypes = {
   item: PropTypes.object,
