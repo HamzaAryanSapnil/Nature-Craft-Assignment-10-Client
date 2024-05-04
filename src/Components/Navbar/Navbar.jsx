@@ -2,15 +2,23 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
-  console.log(user);
 
   const handleLogOut = () => {
     logOut();
     navigate("/");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Logout Success",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    
   };
   const navLinks = (
     <>
@@ -105,7 +113,7 @@ const Navbar = () => {
           <div className="navbar-end">
             <Link
               to="/login"
-              className="btn  btn-outline bg-signBtn text-white font-bold"
+              className="btn  btn-outline text-error  font-bold"
             >
               Login
             </Link>

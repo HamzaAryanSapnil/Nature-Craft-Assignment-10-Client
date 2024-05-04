@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
@@ -46,6 +47,13 @@ const Register = () => {
           .then((data) => {
             console.log(data)
             navigate(location?.state ? location?.state : "/")
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Register success",
+              showConfirmButton: false,
+              timer: 1500
+            });
           });
       }) 
       .catch((error) => {

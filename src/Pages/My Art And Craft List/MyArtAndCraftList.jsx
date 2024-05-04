@@ -10,12 +10,10 @@ const MyArtAndCraftList = () => {
   const user = useAuth();
   const [items, setItems] = useState([]);
   const email = user?.user?.email;
-  console.log(email);
   useEffect(() => {
     fetch(`http://localhost:3000/myArtAndCraftList/${email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setItems(data);
       });
   }, [email]);
@@ -26,7 +24,6 @@ const MyArtAndCraftList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           const remaining = items.filter((item) => item._id !== id);
           setItems(remaining);
@@ -43,8 +40,8 @@ const MyArtAndCraftList = () => {
           <figure>
             <img
               src={
-                item.photoUrl
-                  ? item.photoUrl
+                item?.photoUrl
+                  ? item?.photoUrl
                   : "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
               }
               alt="Shoes"
@@ -52,14 +49,14 @@ const MyArtAndCraftList = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{item.item_name}</h2>
-            <p>Price: {item.price}</p>
-            <p>Rating: {item.rating}</p>
-            <p>Customization: {item.customization_value}</p>
-            <p>Stock Status: {item.stock_status}</p>
-            <p>Sub Category: {item.sub_category}</p>
+            <h2 className="card-title">{item?.item_name}</h2>
+            <p>Price: {item?.price}</p>
+            <p>Rating: {item?.rating}</p>
+            <p>Customization: {item?.customization_value}</p>
+            <p>Stock Status: {item?.stock_status}</p>
+            <p>Sub Category: {item?.sub_category}</p>
 
-            <Link to={`/craftDetails/${item._id}`}>
+            <Link to={`/craftDetails/${item?._id}`}>
               <button className="btn btn-primary tooltip" data-tip="Details">
                 <TbListDetails />
               </button>

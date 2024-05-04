@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/Use Auth Context/UseAuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,6 +31,13 @@ const Login = () => {
         .then((data) => {
           console.log(data);
           navigate(location?.state ? location?.state : "/")
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Success",
+            showConfirmButton: false,
+            timer: 1500
+          });
         });
     })
     .catch(error => console.error(error));
@@ -40,6 +48,13 @@ const Login = () => {
       .then((result) => {
         console.log("Google Login", result);
         navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -49,6 +64,13 @@ const Login = () => {
       .then((result) => {
         console.log("Github Login", result);
         navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch((error) => console.log(error));
   };

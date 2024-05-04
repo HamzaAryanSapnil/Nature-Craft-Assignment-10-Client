@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const UpdateForm = ({ craft }) => {
   const navigate = useNavigate();
   const {
@@ -49,11 +50,26 @@ const UpdateForm = ({ craft }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount > 0) {
-          navigate("/");
-        }
+        Swal.fire({
+          title: "Do you want to save the changes?",
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Save",
+          denyButtonText: `Don't save`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (data.modifiedCount > 0) {
+            if (result.isConfirmed) {
+              navigate("/");
+              Swal.fire("Saved!", "", "success");
+            }
+          } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
+          }
+        });
       });
   };
+  console.log(photoUrl);
   return (
     <div>
       <div className="hero  min-h-screen bg-base-200">
